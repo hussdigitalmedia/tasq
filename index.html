@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HussCo — operations engineering for local business</title>
-<meta name="description" content="An industrial systems engineer who redesigns how your business actually runs, then builds the automation to make it stick. The assessment is the front door — a plain report of where you're losing time and what I'd change." />
+<title>HussCo — save time, save money, grow sales</title>
+<meta name="description" content="An operations engineer who finds where your business is losing time and money, fixes how it runs, and builds the systems that keep it growing. Starts with a free 20-minute assessment." />
 <link rel="icon" type="image/png" href="h-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +42,7 @@
   }
   .display{font-family:var(--display); font-weight:360; letter-spacing:-0.025em; line-height:1.02}
   em{font-style:italic; color:var(--kraft)}
-  .lead{font-size:20px; color:var(--fg-dim); max-width:60ch; line-height:1.55}
+  .lead{font-size:20px; color:var(--fg-dim); max-width:56ch; line-height:1.55}
   .muted{color:var(--fg-dim)}
   .faint{color:var(--fg-faint)}
   .hr{height:1px; background:var(--line); border:0}
@@ -52,18 +52,8 @@
   .nav{display:flex; align-items:center; justify-content:space-between; height:68px}
   .brand{display:flex; align-items:center; gap:12px}
   .brand .name{font-family:var(--display); font-size:22px; letter-spacing:0.02em}
-  .monogram{display:grid; place-items:center; flex:0 0 auto;
-    background:linear-gradient(150deg,var(--kraft),var(--clay));
-    color:#1B1813; font-family:var(--display); font-weight:500; letter-spacing:-0.01em}
-  .monogram.sm{width:36px; height:36px; border-radius:9px; font-size:21px; box-shadow:0 6px 22px rgba(4,3,2,0.4)}
-  .monogram.lg{width:76px; height:76px; border-radius:18px; font-size:42px;
-    margin-bottom:34px; box-shadow:0 18px 60px rgba(4,3,2,0.55); animation:floaty 9s ease-in-out infinite}
-  .monogram.xs{width:26px; height:26px; border-radius:7px; font-size:15px}
-  /* real HDM H-mark */
   .hmark{display:block; width:auto; flex:0 0 auto}
   .hmark.sm{height:34px}
-  .hmark.lg{height:80px; margin-bottom:34px; animation:floaty 9s ease-in-out infinite;
-    filter:drop-shadow(0 18px 60px rgba(4,3,2,0.55))}
   .hmark.xs{height:24px}
   .btn{
     display:inline-flex; align-items:center; gap:9px;
@@ -77,59 +67,42 @@
   .btn-ghost:hover{border-color:var(--kraft); color:var(--kraft)}
   .nav .btn{padding:9px 16px; font-size:14px}
 
-  .hero{padding:120px 0 96px; position:relative; overflow:hidden}
-  .hero-glyph{position:absolute; top:-6%; right:-3%; font-family:var(--display); font-weight:360;
-    font-size:46rem; line-height:1; color:var(--kraft); opacity:0.045; pointer-events:none;
-    user-select:none; z-index:0; letter-spacing:-0.04em}
+  .hero{padding:116px 0 92px; position:relative; overflow:hidden}
+  .hero-mark{position:absolute; top:-6%; right:-3%; height:560px; width:auto;
+    opacity:0.05; pointer-events:none; user-select:none; z-index:0}
   .hero .wrap{position:relative; z-index:2}
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  .hero h1{font-size:clamp(2.8rem,7vw,5rem); margin:18px 0 26px; max-width:16ch}
-  .hero .lead{font-size:22px}
+  .hero h1{font-size:clamp(2.9rem,7.5vw,5.4rem); margin:18px 0 26px; max-width:15ch}
+  .hero .lead{font-size:22px; max-width:54ch}
   .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:38px; align-items:center}
   .cta-note{font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--fg-faint)}
 
-  section{padding:86px 0}
-  .sec-head{max-width:62ch; margin-bottom:52px}
-  .sec-head h2{font-size:clamp(2rem,4.5vw,3.25rem); margin:18px 0 0}
+  section{padding:84px 0}
+  .sec-head{max-width:62ch; margin-bottom:48px}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem); margin:18px 0 0}
 
+  /* three outcomes */
+  .three{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .three .card{border:1px solid var(--line); border-radius:14px; padding:30px 28px; background:var(--surface)}
+  .three .card .k{font-family:var(--display); font-size:1.7rem; letter-spacing:-0.01em}
+  .three .card .v{color:var(--fg-dim); font-size:15.5px; margin-top:12px; line-height:1.5}
+
+  /* how it works */
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line)}
   .step{padding:34px 28px 34px 0; border-right:1px solid var(--line)}
   .step:last-child{border-right:0; padding-right:0}
   .step .idx{font-family:var(--mono); font-size:12px; letter-spacing:0.22em; color:var(--clay)}
-  .step h3{font-family:var(--display); font-weight:400; font-size:1.6rem; margin:14px 0 12px; letter-spacing:-0.01em}
+  .step h3{font-family:var(--display); font-weight:400; font-size:1.55rem; margin:14px 0 12px; letter-spacing:-0.01em}
   .step p{color:var(--fg-dim); font-size:16px}
 
-  .panel{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:42px}
-  .deliver{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:center}
-  .checklist{list-style:none; display:grid; gap:16px}
-  .checklist li{display:flex; gap:14px; align-items:flex-start; font-size:16px; color:var(--fg-dim)}
-  .checklist .tick{color:var(--kraft); font-family:var(--mono); flex:0 0 auto; margin-top:2px}
-  .price-tag{font-family:var(--display); font-size:3.4rem; letter-spacing:-0.02em; line-height:1}
-  .price-sub{color:var(--fg-faint); font-size:14px; margin-top:10px; font-family:var(--mono); letter-spacing:0.08em}
-
-  .ladder{display:grid; gap:0; border:1px solid var(--line); border-radius:14px; overflow:hidden}
-  .rung{display:grid; grid-template-columns:auto 1fr auto; gap:24px; align-items:center;
-    padding:24px 28px; border-bottom:1px solid var(--line)}
-  .rung:last-child{border-bottom:0}
-  .rung:nth-child(odd){background:rgba(255,255,255,0.012)}
-  .rung .step-n{font-family:var(--mono); font-size:12px; color:var(--clay); letter-spacing:0.2em}
-  .rung .label{font-family:var(--display); font-size:1.3rem; font-weight:400}
-  .rung .desc{color:var(--fg-faint); font-size:14.5px; margin-top:4px}
-  .rung .pricecol{font-family:var(--mono); color:var(--kraft); font-size:15px; white-space:nowrap; text-align:right}
-
-  .who{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:10px}
-  .who .pill{border:1px solid var(--line); border-radius:10px; padding:20px; background:var(--surface)}
-  .who .pill .k{font-family:var(--display); font-size:1.15rem}
-  .who .pill .v{color:var(--fg-faint); font-size:14px; margin-top:6px}
-
+  /* credibility */
   .edge{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start}
   .edge blockquote{font-family:var(--display); font-weight:360; font-size:1.7rem; line-height:1.35; letter-spacing:-0.01em}
 
-  .final{text-align:center; padding:110px 0}
-  .final h2{font-size:clamp(2.2rem,5vw,3.6rem); margin:18px auto 22px; max-width:18ch}
-  .final .lead{margin:0 auto}
+  .final{text-align:center; padding:104px 0}
+  .final h2{font-size:clamp(2.2rem,5vw,3.5rem); margin:18px auto 22px; max-width:18ch}
+  .final .lead{margin:0 auto; text-align:center}
 
-  footer{border-top:1px solid var(--line); padding:40px 0; color:var(--fg-faint); font-size:14px}
+  footer{border-top:1px solid var(--line); padding:38px 0; color:var(--fg-faint); font-size:14px}
   .foot{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px}
   .foot .mono{font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase}
 
@@ -137,19 +110,15 @@
   .reveal.in{opacity:1; transform:none}
 
   @media(prefers-reduced-motion:reduce){
-    .monogram.lg{animation:none}
     .reveal{opacity:1; transform:none; transition:none}
     html{scroll-behavior:auto}
   }
 
   @media(max-width:820px){
-    .hero-glyph{font-size:28rem; opacity:0.04}
-    .steps,.deliver,.who,.edge{grid-template-columns:1fr}
+    .hero-mark{height:360px; opacity:0.04}
+    .three,.steps,.edge{grid-template-columns:1fr}
     .step{border-right:0; border-bottom:1px solid var(--line); padding:28px 0}
     .step:last-child{border-bottom:0}
-    .who{grid-template-columns:1fr 1fr}
-    .rung{grid-template-columns:auto 1fr}
-    .rung .pricecol{grid-column:2; text-align:left}
   }
 </style>
 </head>
@@ -162,143 +131,92 @@
       <img class="hmark sm" src="h-mark.png" alt="HussCo" />
       <span class="name">HussCo</span>
     </a>
-    <a class="btn btn-primary" href="#book">Book a free assessment</a>
+    <a class="btn btn-primary" href="#start">Book a free assessment</a>
   </div>
 </header>
 
 <a id="top"></a>
 <section class="hero">
-  <div class="hero-glyph" aria-hidden="true">H</div>
+  <img class="hero-mark" src="h-mark.png" alt="" aria-hidden="true" />
   <div class="wrap">
-    <img class="hmark lg" src="h-mark.png" alt="HussCo" />
-    <div class="eyebrow">Operations engineering &middot; automation &middot; for local business</div>
-    <h1 class="display">Most people sell you AI tools. I re-engineer how your business <em>runs</em>.</h1>
-    <p class="lead">I'm an industrial systems engineer. I spend twenty minutes on how the work actually flows through your business, find where it's leaking time and money, and tell you exactly what I'd change. AI and automation are just how we make the fix stick &mdash; not the point. You walk away with a plain report whether or not you ever hire me.</p>
+    <div class="eyebrow">Operations engineering for local business</div>
+    <h1 class="display">Save time. Save money. Grow sales.</h1>
+    <p class="lead">I'm an operations engineer. I find where your business is losing time and money, fix how it runs, and build the systems that keep it growing. It starts with a free twenty-minute look.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#book">Book a free assessment</a>
+      <a class="btn btn-primary" href="#start">Start with a free assessment</a>
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
-    <p class="cta-note" style="margin-top:22px">First few assessments are free &middot; no tool pitch &middot; no obligation</p>
+    <p class="cta-note" style="margin-top:22px">Free 20-minute assessment &middot; no software pitch &middot; no obligation</p>
   </div>
 </section>
 
 <div class="wrap"><hr class="hr" /></div>
 
+<section id="what">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">What I do</div>
+      <h2 class="display">Three things your business actually cares about.</h2>
+    </div>
+    <div class="three reveal">
+      <div class="card">
+        <div class="k">Save money</div>
+        <div class="v">Cut the wasted hours and quiet costs draining your margins every week.</div>
+      </div>
+      <div class="card">
+        <div class="k">Save time</div>
+        <div class="v">Automate the repeat work &mdash; quotes, scheduling, follow-ups, paperwork &mdash; so your week opens back up.</div>
+      </div>
+      <div class="card">
+        <div class="k">Grow sales</div>
+        <div class="v">Stop leads from slipping and turn more of them into booked, paying work.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="how">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="eyebrow">How it works</div>
-      <h2 class="display">Map it, fix it, then automate it.</h2>
+      <h2 class="display">Look, report, fix.</h2>
     </div>
-    <div class="steps">
+    <div class="steps reveal">
       <div class="step">
-        <div class="idx">01 / MAP</div>
-        <h3>Twenty minutes on how you run</h3>
-        <p>A short call or recording where we trace how the work actually flows, start to finish. No prep, no judgment. I'm looking for the repeated steps, the broken handoffs, the places it bogs down.</p>
-      </div>
-      <div class="step">
-        <div class="idx">02 / DIAGNOSE</div>
-        <h3>Where it's leaking, and what I'd change</h3>
-        <p>A plain report 48 hours later. It leads with the process fixes &mdash; fewer steps, cleaner handoffs &mdash; then the specific tools that implement them, each with the rough time and money it saves. No jargon.</p>
+        <div class="idx">01 / LOOK</div>
+        <h3>A free 20-minute look</h3>
+        <p>We walk through how your business actually runs, start to finish. No prep, no pitch &mdash; I'm finding where it bogs down.</p>
       </div>
       <div class="step">
-        <div class="idx">03 / ENGINEER</div>
-        <h3>Redesign it, then automate it</h3>
-        <p>Optional. I redesign the workflow, build the automation that makes it stick, and keep it running. You only pay to fix what clearly pays for itself.</p>
+        <div class="idx">02 / REPORT</div>
+        <h3>What's leaking, and what I'd change</h3>
+        <p>A couple days later you get a short, plain-English report: where the time and money are going, and exactly what I'd do about it. Yours to keep.</p>
+      </div>
+      <div class="step">
+        <div class="idx">03 / FIX</div>
+        <h3>Built only if it pays for itself</h3>
+        <p>Want me to build the fixes? That's a separate quote &mdash; and only the ones that clearly save you more than they cost.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="panel reveal">
-      <div class="deliver">
-        <div>
-          <div class="eyebrow">The assessment</div>
-          <h2 class="display" style="font-size:2.2rem; margin:16px 0 24px">What you walk away with</h2>
-          <ul class="checklist">
-            <li><span class="tick">+</span> An executive summary of where your team is losing hours each week.</li>
-            <li><span class="tick">+</span> An effort-vs-impact map so you know what to do first.</li>
-            <li><span class="tick">+</span> The process fixes that matter most, each with the specific tool or automation that implements it.</li>
-            <li><span class="tick">+</span> A day-by-day quick-win plan you could run yourself.</li>
-            <li><span class="tick">+</span> The honest financial picture: hours saved, dollars saved, what it costs.</li>
-          </ul>
-        </div>
-        <div>
-          <div class="price-tag">$999</div>
-          <div class="price-sub">PER ASSESSMENT &middot; 48-HOUR TURNAROUND</div>
-          <p class="muted" style="margin-top:22px; font-size:15.5px">The first few are free while I build local case studies. After that it is a flat $999, and it is the only thing you ever have to pay for. Everything it recommends, you are free to do yourself.</p>
-          <a class="btn btn-primary" href="#book" style="margin-top:26px">Start with a free one</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">If you want it fixed</div>
-      <h2 class="display">The assessment is the door. Here's the rest of the house.</h2>
-    </div>
-    <div class="ladder reveal">
-      <div class="rung">
-        <div class="step-n">A</div>
-        <div><div class="label">Process redesign</div><div class="desc">Fix the workflow before automating it. Automating fifteen steps that should be seven just speeds up the waste.</div></div>
-        <div class="pricecol">$3&ndash;5K</div>
-      </div>
-      <div class="rung">
-        <div class="step-n">B</div>
-        <div><div class="label">Automation build</div><div class="desc">The repetitive handoffs done for you &mdash; quotes, follow-ups, scheduling, data entry &mdash; running quietly in the background.</div></div>
-        <div class="pricecol">$1&ndash;3K</div>
-      </div>
-      <div class="rung">
-        <div class="step-n">C</div>
-        <div><div class="label">Knowledge system</div><div class="desc">A custom assistant trained on your own documents that answers the same questions your team fields all day.</div></div>
-        <div class="pricecol">$1.5&ndash;4K</div>
-      </div>
-      <div class="rung">
-        <div class="step-n">D</div>
-        <div><div class="label">Kept running</div><div class="desc">Monthly upkeep so the systems keep working and keep improving as your business changes.</div></div>
-        <div class="pricecol">from $500/mo</div>
-      </div>
-    </div>
-    <p class="faint" style="margin-top:18px; font-size:14px">Ranges, not quotes. Every build is sized to what it actually saves you &mdash; if it doesn't pay for itself, I'll tell you.</p>
   </div>
 </section>
 
 <section>
   <div class="wrap edge reveal">
     <div>
-      <div class="eyebrow">Why me</div>
+      <div class="eyebrow">Who you're dealing with</div>
       <h2 class="display" style="font-size:2.4rem; margin-top:16px">An engineer, not a reseller.</h2>
     </div>
     <div>
-      <blockquote>Most people doing this can only swap one tool for another. I'm an industrial systems engineer &mdash; redesigning how work flows is the actual job I was trained for. The tools are the easy part.</blockquote>
-      <p class="muted" style="margin-top:22px; font-size:15.5px">That's the difference between automating your mess faster and fixing the mess. The assessment finds both; the build handles whichever moves the needle.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div class="eyebrow">Who it's for</div>
-      <h2 class="display">Built for real local businesses.</h2>
-    </div>
-    <div class="who reveal">
-      <div class="pill"><div class="k">5&ndash;50 people</div><div class="v">Small enough to move, big enough to have real busywork.</div></div>
-      <div class="pill"><div class="k">Admin-heavy</div><div class="v">Quotes, scheduling, follow-ups, paperwork eating your week.</div></div>
-      <div class="pill"><div class="k">Owner-run</div><div class="v">You make the call &mdash; no committee, no procurement maze.</div></div>
-      <div class="pill"><div class="k">Local &amp; established</div><div class="v">Dental, legal, trades, real estate, clinics, contractors.</div></div>
+      <blockquote>I'm Connor Huss &mdash; an industrial systems engineer. Redesigning how work flows is the actual thing I'm trained for, not a tool I'm trying to sell you.</blockquote>
+      <p class="muted" style="margin-top:22px; font-size:15.5px">I'll tell you what you don't need as fast as what you do. That honesty is the whole point &mdash; and it's why this starts free.</p>
     </div>
   </div>
 </section>
 
 <div class="wrap"><hr class="hr" /></div>
 
-<section id="book" class="final">
+<section id="start" class="final">
   <div class="wrap">
     <div class="eyebrow">Start here</div>
     <h2 class="display">Twenty minutes that could give your week back.</h2>
