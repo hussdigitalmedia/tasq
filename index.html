@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TASQ — operations engineering for local business</title>
+<title>HussCo — operations engineering for local business</title>
 <meta name="description" content="An industrial systems engineer who redesigns how your business actually runs, then builds the automation to make it stick. The assessment is the front door — a plain report of where you're losing time and what I'd change." />
-<link rel="icon" type="image/png" href="tasq-mark.png" />
+<link rel="icon" type="image/png" href="h-mark.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,360;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -31,7 +31,6 @@
       linear-gradient(var(--bg),var(--bg));
     background-attachment:fixed;
   }
-  /* film grain over the charcoal so it isn't flat */
   .grain{position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.05; mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
   body>*{position:relative; z-index:2}
@@ -52,8 +51,20 @@
     background:rgba(27,24,19,0.72); border-bottom:1px solid var(--line)}
   .nav{display:flex; align-items:center; justify-content:space-between; height:68px}
   .brand{display:flex; align-items:center; gap:12px}
-  .brand img{width:34px; height:34px; border-radius:9px}
   .brand .name{font-family:var(--display); font-size:22px; letter-spacing:0.02em}
+  .monogram{display:grid; place-items:center; flex:0 0 auto;
+    background:linear-gradient(150deg,var(--kraft),var(--clay));
+    color:#1B1813; font-family:var(--display); font-weight:500; letter-spacing:-0.01em}
+  .monogram.sm{width:36px; height:36px; border-radius:9px; font-size:21px; box-shadow:0 6px 22px rgba(4,3,2,0.4)}
+  .monogram.lg{width:76px; height:76px; border-radius:18px; font-size:42px;
+    margin-bottom:34px; box-shadow:0 18px 60px rgba(4,3,2,0.55); animation:floaty 9s ease-in-out infinite}
+  .monogram.xs{width:26px; height:26px; border-radius:7px; font-size:15px}
+  /* real HDM H-mark */
+  .hmark{display:block; width:auto; flex:0 0 auto}
+  .hmark.sm{height:34px}
+  .hmark.lg{height:80px; margin-bottom:34px; animation:floaty 9s ease-in-out infinite;
+    filter:drop-shadow(0 18px 60px rgba(4,3,2,0.55))}
+  .hmark.xs{height:24px}
   .btn{
     display:inline-flex; align-items:center; gap:9px;
     font-family:var(--body); font-weight:500; font-size:15px;
@@ -67,13 +78,10 @@
   .nav .btn{padding:9px 16px; font-size:14px}
 
   .hero{padding:120px 0 96px; position:relative; overflow:hidden}
-  /* giant faint Fraunces T = atmospheric depth, no asset needed */
   .hero-glyph{position:absolute; top:-6%; right:-3%; font-family:var(--display); font-weight:360;
     font-size:46rem; line-height:1; color:var(--kraft); opacity:0.045; pointer-events:none;
     user-select:none; z-index:0; letter-spacing:-0.04em}
   .hero .wrap{position:relative; z-index:2}
-  .hero .mark{width:76px; height:76px; border-radius:18px; margin-bottom:34px;
-    box-shadow:0 18px 60px rgba(4,3,2,0.55); animation:floaty 9s ease-in-out infinite}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   .hero h1{font-size:clamp(2.8rem,7vw,5rem); margin:18px 0 26px; max-width:16ch}
   .hero .lead{font-size:22px}
@@ -125,12 +133,11 @@
   .foot{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px}
   .foot .mono{font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase}
 
-  /* calm scroll-reveal (L3) */
   .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
   .reveal.in{opacity:1; transform:none}
 
   @media(prefers-reduced-motion:reduce){
-    .hero .mark{animation:none}
+    .monogram.lg{animation:none}
     .reveal{opacity:1; transform:none; transition:none}
     html{scroll-behavior:auto}
   }
@@ -152,8 +159,8 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <img src="tasq-mark.png" alt="TASQ mark" />
-      <span class="name">TASQ</span>
+      <img class="hmark sm" src="h-mark.png" alt="HussCo" />
+      <span class="name">HussCo</span>
     </a>
     <a class="btn btn-primary" href="#book">Book a free assessment</a>
   </div>
@@ -161,9 +168,9 @@
 
 <a id="top"></a>
 <section class="hero">
-  <div class="hero-glyph" aria-hidden="true">T</div>
+  <div class="hero-glyph" aria-hidden="true">H</div>
   <div class="wrap">
-    <img class="mark" src="tasq-mark.png" alt="TASQ mark" />
+    <img class="hmark lg" src="h-mark.png" alt="HussCo" />
     <div class="eyebrow">Operations engineering &middot; automation &middot; for local business</div>
     <h1 class="display">Most people sell you AI tools. I re-engineer how your business <em>runs</em>.</h1>
     <p class="lead">I'm an industrial systems engineer. I spend twenty minutes on how the work actually flows through your business, find where it's leaking time and money, and tell you exactly what I'd change. AI and automation are just how we make the fix stick &mdash; not the point. You walk away with a plain report whether or not you ever hire me.</p>
@@ -297,8 +304,8 @@
     <h2 class="display">Twenty minutes that could give your week back.</h2>
     <p class="lead">Tell me what your business does and where the time goes. I'll come back with a free assessment &mdash; no software pitch, no obligation.</p>
     <div class="cta-row" style="justify-content:center; margin-top:34px">
-      <a class="btn btn-primary" href="mailto:connor@hussdigitalmedia.com?subject=TASQ%20assessment">Email Connor</a>
-      <a class="btn btn-ghost" href="mailto:connor@hussdigitalmedia.com?subject=TASQ%20assessment">connor@hussdigitalmedia.com</a>
+      <a class="btn btn-primary" href="mailto:connor@hussco.io?subject=HussCo%20assessment">Email Connor</a>
+      <a class="btn btn-ghost" href="mailto:connor@hussco.io?subject=HussCo%20assessment">connor@hussco.io</a>
     </div>
   </div>
 </section>
@@ -306,10 +313,10 @@
 <footer>
   <div class="wrap foot">
     <div class="brand">
-      <img src="tasq-mark.png" alt="TASQ mark" style="width:26px;height:26px;border-radius:7px" />
-      <span class="mono">TASQ</span>
+      <img class="hmark xs" src="h-mark.png" alt="HussCo" />
+      <span class="mono">HussCo</span>
     </div>
-    <div class="mono">AI assessments &amp; automation &middot; 2026</div>
+    <div class="mono">Operations engineering &amp; automation &middot; 2026</div>
   </div>
 </footer>
 
@@ -327,7 +334,6 @@
       }
       return false;
     }
-    // reveal anything already on/near screen at load
     els.forEach(revealIfVisible);
 
     var io = new IntersectionObserver(function(entries){
@@ -337,7 +343,6 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
     els.forEach(function(el){ if (!el.classList.contains('in')) io.observe(el); });
 
-    // failsafe: never let content stay hidden if the observer misbehaves
     setTimeout(showAll, 3500);
   })();
 </script>
