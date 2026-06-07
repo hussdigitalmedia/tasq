@@ -111,6 +111,19 @@
   .final{text-align:center; padding:104px 0}
   .final h2{font-size:clamp(2.2rem,5vw,3.5rem); margin:18px auto 22px; max-width:18ch}
   .final .lead{margin:0 auto; text-align:center}
+  .cform{max-width:500px; margin:34px auto 0; text-align:left; display:grid; gap:14px}
+  .cform .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  .cform label{font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--fg-faint); display:block; margin-bottom:7px}
+  .cform input,.cform textarea{width:100%; background:var(--surface); border:1px solid var(--line); border-radius:8px; color:var(--fg); font-family:var(--body); font-size:16px; padding:12px 14px; transition:border-color .2s}
+  .cform input:focus,.cform textarea:focus{outline:none; border-color:var(--kraft)}
+  .cform textarea{resize:vertical; min-height:100px}
+  .cform .btn-primary{justify-content:center; width:100%; font-size:16px; padding:14px}
+  .cform-msg{max-width:500px; margin:16px auto 0; font-size:15px}
+  .cform-msg.ok{color:var(--kraft)}
+  .cform-msg.err{color:#D29A8B}
+  .alt{margin-top:26px; font-size:15px; color:var(--fg-dim)}
+  .alt a{color:var(--kraft)}
+  @media(max-width:560px){.cform .row2{grid-template-columns:1fr}}
 
   footer{border-top:1px solid var(--line); padding:38px 0; color:var(--fg-faint); font-size:14px}
   .foot{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px}
@@ -142,7 +155,7 @@
       <img class="hmark sm" src="h-mark-cream.png" alt="HussCo" />
       <span class="name">HussCo</span>
     </a>
-    <a class="btn btn-primary" href="#start">Book a free call</a>
+    <a class="btn btn-primary" href="https://calendar.app.google/xGZ9F86tMjRJasR56" target="_blank" rel="noopener">Book a free call</a>
   </div>
 </header>
 
@@ -237,13 +250,25 @@
   <div class="wrap">
     <div class="eyebrow">Start here</div>
     <h2 class="display">Twenty minutes that could give your week back.</h2>
-    <p class="lead">Tell me what your business does and where the time goes. I'll come back with your free Business Physical &mdash; no software pitch, no obligation.</p>
-    <div class="cta-row" style="justify-content:center; margin-top:34px">
-      <!-- BOOKING: primary "Book a 20-minute call" button (Google Calendar link) drops in here once Connor sends it -->
-      <a class="btn btn-primary" href="mailto:connor@hussco.io?subject=Free%20Business%20Physical&body=Hi%20Connor%2C%20I%27d%20like%20a%20free%20Business%20Physical.%20Here%27s%20what%20my%20business%20does%3A%20">Email me for a free Physical</a>
-      <a class="btn btn-ghost" href="mailto:connor@hussco.io?subject=Free%20Business%20Physical">connor@hussco.io</a>
+    <p class="lead">Pick a time that works for you &mdash; or send a few details and I'll reach out. Free Business Physical, no software pitch, no obligation.</p>
+    <div class="cta-row" style="justify-content:center; margin-top:30px">
+      <a class="btn btn-primary" href="https://calendar.app.google/xGZ9F86tMjRJasR56" target="_blank" rel="noopener">Book a 20-minute call</a>
     </div>
-    <p class="muted" style="margin-top:18px; font-size:15px">Or just write to <a href="mailto:connor@hussco.io?subject=Free%20Business%20Physical" style="color:var(--kraft)">connor@hussco.io</a> &mdash; I reply the same day.</p>
+    <p class="alt" style="margin:32px auto 0; max-width:500px">Prefer to send details first? I'll reach out:</p>
+    <form id="cform" class="cform" style="margin-top:14px" novalidate>
+      <input type="hidden" name="access_key" value="4b43feab-7b75-49bd-9cb3-9eb1fb798c8f" />
+      <input type="hidden" name="subject" value="New Business Physical request — hussco.io" />
+      <input type="hidden" name="from_name" value="HussCo website" />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="row2">
+        <div><label>Your name</label><input type="text" name="name" required /></div>
+        <div><label>Your email</label><input type="email" name="email" required /></div>
+      </div>
+      <div><label>What does your business do? Where does the time go?</label><textarea name="message" required></textarea></div>
+      <button type="submit" class="btn btn-primary">Book my free Business Physical</button>
+    </form>
+    <div id="cform-msg" class="cform-msg" role="status" aria-live="polite"></div>
+    <p class="alt"><!-- BOOKING: "Book a 20-minute call" calendar link drops in here once Connor sends it -->Prefer email? <a href="mailto:connor@hussco.io?subject=Free%20Business%20Physical">connor@hussco.io</a> &mdash; I reply the same day.</p>
   </div>
 </section>
 
@@ -281,6 +306,26 @@
     els.forEach(function(el){ if (!el.classList.contains('in')) io.observe(el); });
 
     setTimeout(showAll, 3500);
+  })();
+</script>
+
+<script>
+  (function(){
+    var form = document.getElementById('cform');
+    if(!form) return;
+    var msg = document.getElementById('cform-msg');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      msg.className = 'cform-msg'; msg.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', { method:'POST', body:new FormData(form) })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if(j.success){ form.style.display='none'; msg.className='cform-msg ok'; msg.textContent='Got it — I’ll get back to you the same day. Thanks!'; }
+          else { msg.className='cform-msg err'; msg.textContent='Something went wrong — please email connor@hussco.io directly.'; }
+        })
+        .catch(function(){ msg.className='cform-msg err'; msg.textContent='Something went wrong — please email connor@hussco.io directly.'; });
+    });
   })();
 </script>
 
